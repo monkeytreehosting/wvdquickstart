@@ -42,6 +42,13 @@ stages:
                   TargetFolder: '$(Pipeline.Workspace)/s/Uploads/WVDScripts/002-FSLogix'
                   OverWrite: true
               - task: CopyFiles@2
+                name: Copy_OneDrive_parameters
+                inputs:
+                  SourceFolder: '$(Build.Repository.LocalPath)/QS-WVD/Parameters'
+                  Contents: 'onedrive.parameters.json'
+                  TargetFolder: '$(Pipeline.Workspace)/s/Uploads/WVDScripts/005-OneDrive'
+                  OverWrite: true
+              - task: CopyFiles@2
                 name: Copy_Userconfig_parameters
                 inputs:
                   SourceFolder: '$(Build.Repository.LocalPath)/QS-WVD/Parameters'
