@@ -124,7 +124,7 @@ function Set-Logger {
 
 ## MAIN
 #Set-Logger "C:\WindowsAzure\CustomScriptExtension\Log" # inside "executionCustomScriptExtension_$date.log"
-Set-Logger "C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\executionLog\OneDirve" # inside "executionCustomScriptExtension_$scriptName_$date.log"
+Set-Logger "C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\executionLog\OneDrive" # inside "executionCustomScriptExtension_$scriptName_$date.log"
 
 LogInfo("###################")
 LogInfo("## 0 - LOAD DATA ##")
@@ -135,7 +135,7 @@ $ConfigurationFilePath= Join-Path $PSScriptRoot $ConfigurationFileName
 
 $ConfigurationJson = Get-Content -Path $ConfigurationFilePath -Raw -ErrorAction 'Stop'
 
-try {$OneDriveConfig = $ConfigurationJson | ConvertFrom-Json -ErrorAction 'Stop' }
+try { $OneDriveConfig = $ConfigurationJson | ConvertFrom-Json -ErrorAction 'Stop' }
 catch {
     Write-Error "Configuration JSON content could not be converted to a PowerShell object" -ErrorAction 'Stop'
 }
@@ -147,18 +147,17 @@ foreach ($config in $OneDriveConfig.onedrive) {
 
     if ($config.installOneDrive) {
         LogInfo("########################")
-        LogInfo("## 2 - INSTALL ONE DRIVE ##")
+        LogInfo("## 2 - INSTALL ODRIVE ##")
         LogInfo("########################")
-        LogInfo("Trigger OneDrive")
+        LogInfo("Trigger ODRIVE")
 
-        # & "$PSScriptRoot\Install-FSLogix.ps1"
         if ($PSCmdlet.ShouldProcess("OneDrive", "Install")) {
             & "$PSScriptRoot\Install-OneDrive.ps1"
             LogInfo("OneDrive installed")
         }
     }
 
-    if ($config.configureOneDrive) {
+    if ($config.configurOneDrive) {
         LogInfo("###########################")
         LogInfo("## 3 - CONFIGURE OneDrive ##")
         LogInfo("###########################")
@@ -171,11 +170,9 @@ foreach ($config in $OneDriveConfig.onedrive) {
         $($config.profileContainerKeys).GetType() | Format-Table
         Write-Verbose "Before function count: $($testArr.Count)"
 
-        # & "$PSScriptRoot\Configure-FSLogix.ps1" $config.profileContainerKeys
         if ($PSCmdlet.ShouldProcess("OneDrive", "Set")) {
             & "$PSScriptRoot\Set-OneDrive.ps1" $config.profileContainerKeys
             LogInfo("OneDrive configured")
         }
-    }   
     }
 }
