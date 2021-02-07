@@ -124,7 +124,7 @@ function Set-Logger {
 
 ## MAIN
 #Set-Logger "C:\WindowsAzure\CustomScriptExtension\Log" # inside "executionCustomScriptExtension_$date.log"
-Set-Logger "C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\executionLog\FSLogix" # inside "executionCustomScriptExtension_$scriptName_$date.log"
+Set-Logger "C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\executionLog\OneDrive" # inside "executionCustomScriptExtension_$scriptName_$date.log"
 
 LogInfo("###################")
 LogInfo("## 0 - LOAD DATA ##")
@@ -143,9 +143,9 @@ catch {
 LogInfo("##################")
 LogInfo("## 1 - EVALUATE ##")
 LogInfo("##################")
-foreach ($config in $OneDriveConfig.fslogix) {
+foreach ($config in $OneDriveConfig.onedrive) {
 
-    if ($config.installFSLogix) {
+    if ($config.installOneDrive) {
         LogInfo("########################")
         LogInfo("## 2 - INSTALL OneDrive ##")
         LogInfo("########################")
