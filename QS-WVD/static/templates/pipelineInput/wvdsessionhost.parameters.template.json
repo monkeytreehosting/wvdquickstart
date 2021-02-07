@@ -136,7 +136,7 @@
                     "storageAccountId": "/subscriptions/[subscriptionId]/resourceGroups/[resourceGroupName]/providers/Microsoft.Storage/storageAccounts/[wvdAssetsStorage]"
                 },
                 {
-                    "uri": "https://[wvdAssetsStorage].blob.core.windows.net/wvdscripts/05-OneDrive.zip",
+                    "uri": "https://[wvdAssetsStorage].blob.core.windows.net/wvdscripts/005-OneDrive.zip",
                     "storageAccountId": "/subscriptions/[subscriptionId]/resourceGroups/[resourceGroupName]/providers/Microsoft.Storage/storageAccounts/[wvdAssetsStorage]"
                 }
             ]
