@@ -124,7 +124,7 @@ LogInfo("###############################")
 LogInfo("# 1. Retrieve Registry Values #")
 LogInfo("###############################")
 $OneDriveRegPath = "HKLM:\software\Microsoft"
-$expectedReqKey = 'OneDrie'
+$expectedReqKey = 'OneDrive'
 $expectedOneDriveRegKeyPath = Join-Path $OneDriveRegPath $expectedReqKey
 
 LogInfo("############################")
