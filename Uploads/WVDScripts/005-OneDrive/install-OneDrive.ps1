@@ -100,12 +100,24 @@ function Set-Logger {
 
 Set-Logger "C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\executionLog\OneDrive" # inside "executionCustomScriptExtension_$scriptName_$date.log"
 
-
 #####################
-# 1 Install OneDrive #
+# 1 Extract FSLogix #
 #####################
 LogInfo("######################")
-LogInfo("# 1. Install OneDrive #")
+LogInfo("# 1. Extract OneDrive #")
+LogInfo("######################")
+
+$OneDriveArchivePath = Join-Path $PSScriptRoot "OneDrive.zip"
+
+LogInfo("Expanding Archive $OneDriveArchivePath into $PSScriptRoot")
+Expand-Archive -Path $FSLogixArchivePath -DestinationPath $PSScriptRoot
+LogInfo("Archive expanded")
+
+#####################
+# 2 Install OneDrive #
+#####################
+LogInfo("######################")
+LogInfo("#2. Install OneDrive #")
 LogInfo("######################")
 
 # To get switches run cmd with '$path /?'
