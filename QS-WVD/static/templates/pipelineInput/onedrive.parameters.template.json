@@ -1,0 +1,34 @@
+{
+    "onedrive": [
+        {
+            "installOneDrive": true,
+            "configureOneDrive": true,
+            "profileContainerKeys": [
+                {
+                    "Name": "SilentAccountConfig",
+                    "Type": "DWORD",
+                    "Value": "1"
+                },
+                 {
+                    "Name": "FilesOnDemandEnabled",
+                    "Type": "DWORD",
+                    "Value": "1"
+                },
+                {
+                    "Name": "KFMSilentOptInWithNotification",
+                    "Type": "DWORD",
+                    "Value": "1"
+                },
+                {
+                    "Name": "KFMSilentOptIn",
+                    "Type": "MultiString",
+                    "Value": "[tenantId]"
+                }
+            ],
+            "fileShareName": "[profilesShareName]",
+            "fileShareStorageAccountName": "[profilesStorageAccountName]",
+            "domain": "[domainName]",
+            "targetGroup": "[targetGroup]"
+        }
+    ]
+}
