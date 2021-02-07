@@ -4,7 +4,7 @@
     Install and configure OneDrive
 
     CSE based on instructions at:
-        https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-user-profile#configure-the-fslogix-profile-container
+        https://docs.microsoft.com/en-us/azure/virtual-desktop/create-host-pools-user-profile#configure-the-logix-profile-container
 #>
 
 [cmdletbinding()]
@@ -111,7 +111,7 @@ function Set-Logger {
 #endregion
 
 
-Set-Logger "C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\executionLog\FSLogix" # inside "executionCustomScriptExtension_$scriptName_$date.log"
+Set-Logger "C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\executionLog\OneDrive" # inside "executionCustomScriptExtension_$scriptName_$date.log"
 
 #####################
 # Configure OneDrive #
@@ -123,20 +123,20 @@ $testArr
 LogInfo("###############################")
 LogInfo("# 1. Retrieve Registry Values #")
 LogInfo("###############################")
-$fsLogixRegPath = "HKLM:\software\Microsoft"
+$OneDriveRegPath = "HKLM:\software\Microsoft"
 $expectedReqKey = 'OneDrie'
-$expectedfsLogixRegKeyPath = Join-Path $fsLogixRegPath $expectedReqKey
+$expectedOneDriveRegKeyPath = Join-Path $OneDriveRegPath $expectedReqKey
 
 LogInfo("############################")
 LogInfo("# 2. Check Profiles RegKey #")
 LogInfo("############################")
 
-if (-not (Test-Path $expectedfsLogixRegKeyPath)) {
-    LogInfo("RegexPath '$expectedfsLogixRegKeyPath' not existing. Creating")
-    New-Item -Path $expectedfsLogixRegKeyPath -Force | Out-Null
+if (-not (Test-Path $expectedOneDriveRegKeyPath)) {
+    LogInfo("RegexPath '$expectedOneDriveRegKeyPath' not existing. Creating")
+    New-Item -Path $expectedOneDriveRegKeyPath -Force | Out-Null
 }
 else {
-    LogInfo("RegexPath '$fsLogixRegPath' already existing. Creation skipped")
+    LogInfo("RegexPath '$OneDriveRegPath' already existing. Creation skipped")
 }
 
 LogInfo("######################")
@@ -144,9 +144,9 @@ LogInfo("# 3. Creating Values #")
 LogInfo("######################")
 
 $registryValues | ForEach-Object {
-    LogInfo('Creating entry "{0}" of type "{1}" with value "{2}" in path "{3}"' -f $_.Name, $_.Type, $_.Value, $expectedfsLogixRegKeyPath)
+    LogInfo('Creating entry "{0}" of type "{1}" with value "{2}" in path "{3}"' -f $_.Name, $_.Type, $_.Value, $expectedOneDriveRegKeyPath)
     $inputObject = @{
-        Path         = $expectedfsLogixRegKeyPath
+        Path         = $expectedOneDriveRegKeyPath
         Name         = $_.Name
         Value        = $_.Value
         PropertyType = $_.Type
