@@ -151,7 +151,7 @@ foreach ($config in $OneDriveConfig.fslogix) {
         LogInfo("########################")
         LogInfo("Trigger OneDrive")
 
-        if ($PSCmdlet.ShouldProcess("FSLogix", "Install")) {
+        if ($PSCmdlet.ShouldProcess("OneDrive", "Install")) {
             & "$PSScriptRoot\Install-OneDrive.ps1"
             LogInfo("OneDrive installed")
         }
@@ -170,7 +170,7 @@ foreach ($config in $OneDriveConfig.fslogix) {
         $($config.profileContainerKeys).GetType() | Format-Table
         Write-Verbose "Before function count: $($testArr.Count)"
 
-        if ($PSCmdlet.ShouldProcess("FSLogix", "Set")) {
+        if ($PSCmdlet.ShouldProcess("OneDrive", "Set")) {
             & "$PSScriptRoot\Set-OneDrive.ps1" $config.profileContainerKeys
             LogInfo("OneDrive configured")
         }
