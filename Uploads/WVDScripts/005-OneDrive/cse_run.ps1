@@ -145,7 +145,8 @@ LogInfo("## 1 - EVALUATE ##")
 LogInfo("##################")
 foreach ($config in $OneDriveConfig.onedrive) {
 
-    if ($config.installOneDrive) {
+    if ($config.install
+    ) {
         LogInfo("########################")
         LogInfo("## 2 - INSTALL ODRIVE ##")
         LogInfo("########################")
@@ -157,7 +158,7 @@ foreach ($config in $OneDriveConfig.onedrive) {
         }
     }
 
-    if ($config.configurOneDrive) {
+    if ($config.configureOneDrive) {
         LogInfo("###########################")
         LogInfo("## 3 - CONFIGURE OneDrive ##")
         LogInfo("###########################")
