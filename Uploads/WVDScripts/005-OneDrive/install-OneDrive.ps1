@@ -98,7 +98,7 @@ function Set-Logger {
 }
 #endregion
 
-Set-Logger "C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\executionLog\FSLogix" # inside "executionCustomScriptExtension_$scriptName_$date.log"
+Set-Logger "C:\WindowsAzure\Logs\Plugins\Microsoft.Compute.CustomScriptExtension\executionLog\OneDrive" # inside "executionCustomScriptExtension_$scriptName_$date.log"
 
 
 #####################
